@@ -53,7 +53,36 @@ public class EfficientDocument extends Document {
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
 		
 		// TODO: Finish this method.  Remember the countSyllables method from 
-		// Document.  That will come in handy here.  isWord defined above will also help.
+		// Document.  That will come in handy here.  isWord defined above will also help.		
+		
+		int wordCounter = 0;
+		int syllCounter = 0;
+		int sentCounter = 0;
+		for (int i = 0; i< tokens.size(); i++) {
+			
+			//Calculate numWords
+			if (isWord(tokens.get(i))) {
+				wordCounter++;
+				//System.out.println(token + " is a word!");
+				
+				//Calculate numSylls
+				syllCounter += countSyllables(tokens.get(i));
+				
+				//Special case when last sentence does not end with punctuation.
+				if (i == (tokens.size()-1)) {
+					sentCounter++;
+				}				
+			}
+			else {
+				// When token is not word, it's punctuation, i.e. end of a sentence.
+				sentCounter++;
+			}
+			
+		}	
+		
+		this.numWords = wordCounter;
+		this.numSyllables = syllCounter;
+		this.numSentences = sentCounter;
 	}
 
 	
@@ -73,7 +102,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSentences() {
 		//TODO: write this method.  Hint: It's simple
-		return 0;
+		return this.numSentences;
 	}
 
 	
@@ -94,7 +123,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumWords() {
 		//TODO: write this method.  Hint: It's simple
-	    return 0;
+	    return this.numWords;
 	}
 
 
@@ -116,7 +145,7 @@ public class EfficientDocument extends Document {
 	@Override
 	public int getNumSyllables() {
         //TODO: write this method.  Hint: It's simple
-        return 0;
+        return this.numSyllables;
 	}
 	
 	// Can be used for testing
