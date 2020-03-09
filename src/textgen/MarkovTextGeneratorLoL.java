@@ -33,6 +33,41 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	public void train(String sourceText)
 	{
 		// TODO: Implement this method
+		if (!wordList.isEmpty())
+			return;
+		String [] textList = sourceText.split("\\s+");		
+		
+		//set "starter" to be the first word in the text  
+		starter = textList[0];
+		//set "prevWord" to be starter
+		String prevWord = starter;
+		
+		String w;
+
+		// for each word "w" in the source text starting at the second word
+		for (int i=1; i<textList.length; i++) {
+			
+			w = textList[i];
+			// if "prevWord" is a node in the list
+			if (!wordList.contains(new ListNode(prevWord))) {				
+				createNewWordNode(prevWord, w);				
+			}
+			else {				
+				addNextWordToNode(prevWord, w);
+			}
+			
+			prevWord = w;
+		}	
+		
+		// add starter to be a next word for the last word in the source text.
+		prevWord = textList[textList.length-1];
+		if (wordList.contains(new ListNode(prevWord))) {
+			addNextWordToNode(prevWord, starter);
+		} 
+		else {			
+			createNewWordNode(prevWord, starter);
+		}	
+		
 	}
 	
 	/** 
@@ -41,7 +76,36 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	@Override
 	public String generateText(int numWords) {
 	    // TODO: Implement this method
-		return null;
+		
+		if (wordList.isEmpty() || numWords == 0) {
+			return "";
+		}
+				
+		String currWord = starter;		
+		String output = "";
+		String randWord = "";
+		
+		output = output + currWord;
+		int numWordCount = 1;
+		
+		while (numWordCount < numWords) {
+			// find the "node" corresponding to "currWord" in the list
+			for (ListNode node : wordList) {
+				//System.out.println("currNode: " + node.getWord() + " & currWord: " + currWord);				
+				if (currWord.equals(node.getWord())){
+					// select a random word "w" from the "wordList" for "node"
+					randWord = node.getRandomNextWord(rnGenerator);
+					output = output + " " + randWord;
+					currWord = randWord;
+					//System.out.println("currWord: " + currWord);
+					break;
+				}
+				
+			}
+			numWordCount++;
+		}
+		//System.out.println("output: " + output);
+		return output;
 	}
 	
 	
@@ -62,9 +126,25 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	public void retrain(String sourceText)
 	{
 		// TODO: Implement this method.
+		starter = "";
+		wordList.clear();
+		train(sourceText);
 	}
 	
 	// TODO: Add any private helper methods you need here.
+	private void createNewWordNode(String prevWord, String currentWord) {
+		ListNode wordNode = new ListNode(prevWord);
+		wordNode.addNextWord(currentWord);
+		wordList.add(wordNode);
+	}
+	
+	private void addNextWordToNode(String prevWord, String currentWord) {
+		for (ListNode node : wordList) {
+			if (node.getWord().equals(prevWord)) {
+				node.addNextWord(currentWord);
+			}
+		}
+	}
 	
 	
 	/**
@@ -76,7 +156,7 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	{
 		// feed the generator a fixed random value for repeatable behavior
 		MarkovTextGeneratorLoL gen = new MarkovTextGeneratorLoL(new Random(42));
-		String textString = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";
+		String textString = "Hello.  Hello there.  This is a test.  Hello there.  Hello Bob.  Test again.";		
 		System.out.println(textString);
 		gen.train(textString);
 		System.out.println(gen);
@@ -144,7 +224,9 @@ class ListNode
 		// TODO: Implement this method
 	    // The random number generator should be passed from 
 	    // the MarkovTextGeneratorLoL class
-	    return null;
+		int randInd = generator.nextInt(nextWords.size());
+		String randWord = nextWords.get(randInd);
+	    return randWord;
 	}
 
 	public String toString()
@@ -155,6 +237,23 @@ class ListNode
 		}
 		toReturn += "\n";
 		return toReturn;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ListNode other = (ListNode) obj;
+		if (word == null) {
+			if (other.word != null)
+				return false;
+		} else if (!word.equals(other.word))
+			return false;
+		return true;
 	}
 	
 }
