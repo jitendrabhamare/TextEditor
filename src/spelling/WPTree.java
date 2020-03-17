@@ -27,9 +27,9 @@ public class WPTree implements WordPath {
 	public WPTree () {
 		this.root = null;
 		// TODO initialize a NearbyWords object
-		// Dictionary d = new DictionaryHashSet();
-		// DictionaryLoader.loadDictionary(d, "data/dict.txt");
-		// this.nw = new NearbyWords(d);
+		Dictionary d = new DictionaryHashSet();
+		DictionaryLoader.loadDictionary(d, "data/dict.txt");
+		this.nw = new NearbyWords(d);
 	}
 	
 	//This constructor will be used by the grader code
@@ -41,7 +41,46 @@ public class WPTree implements WordPath {
 	// see method description in WordPath interface
 	public List<String> findPath(String word1, String word2) 
 	{
-	    // TODO: Implement this method.
+	    // Create a queue of WPTreeNodes to hold words to explore
+		List<WPTreeNode> queue = new LinkedList<WPTreeNode>(); 
+		// Create a visited set to avoid looking at the same word repeatedly
+		HashSet<String> visited = new HashSet<String>();
+		
+		// Set the root to be a WPTreeNode containing word1
+		this.root = new WPTreeNode(word1, null);
+		// Add the initial word to visited
+		visited.add(word1);
+		// Add root to the queue 
+		queue.add(this.root);
+		
+		// while the queue has elements and we have not yet found word2
+		while (!queue.isEmpty() && !visited.contains(word2)) {
+			// remove the node from the start of the queue and assign to curr
+			WPTreeNode curr = queue.remove(0);
+			// get a list of real word neighbors (one mutation from curr's word)
+			List<String> neighbors = nw.distanceOne(curr.getWord(), true);			
+			
+			//List<String> retPath = new LinkedList<String>();
+			
+			for (String n: neighbors) {
+				//  if n is not visited
+				if (!visited.contains(n)) {
+					// add n as a child of curr 
+					WPTreeNode child = curr.addChild(n);
+					// add n to the visited set
+					visited.add(n);
+					// add the node for n to the back of the queue
+					queue.add(child);
+					
+					// if n is word2, return the path from child to root
+					if (n.equals(word2)) {
+						return child.buildPathToRoot();					
+					}
+				}
+			}
+					
+		}	
+		
 	    return new LinkedList<String>();
 	}
 	
@@ -54,6 +93,21 @@ public class WPTree implements WordPath {
 		}
 		ret+= "]";
 		return ret;
+	}
+	
+	public static void main(String[] args) {
+		
+		
+		WPTree wp = new WPTree();
+		
+		String word1 = "time";
+		String word2 = "theme";
+		
+		
+		List<String> output = wp.findPath(word1, word2);
+		System.out.println(output);
+		
+		
 	}
 	
 }
