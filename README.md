@@ -15,5 +15,5 @@ The code being developed here is what’s called “back-end” code, in that I 
 ![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/moocTextEditor-Flesch-score.png)
 
 #### Code
-- src/document/Document.java
-- src/document/BasicDocument.java
+- [src/document/Document.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/Document.java)
+- [src/document/BasicDocument.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/BasicDocument.java)
