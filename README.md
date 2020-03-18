@@ -20,5 +20,7 @@ The code being developed here is what’s called “back-end” code, in that I 
 
 ### 2. Making Flesch Score Calculation More Efficient
 - Optimize the implementation of the Document class and then measure how much faster the new implementation is.
--  Implementate EfficientDocument such that code counts the number of words, sentences and syllables in the document and store these values in the appropriate member variables so that when the method is over, they never have to be re-calculated.
+-  Implementate EfficientDocument such that code counts the number of words, sentences and syllables in the document and store these values in the appropriate member variables so that when the method is over, **they never have to be re-calculated**.
 -  **Determine and plot how much faster EfficientDocument is than BasicDocument in computing a single Flesch score** for a document by calculating the Big-O running time of the code to compute the Flesch score for BasicDocument and EfficientDocument.
+
+<kbd>![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/BasicDoc-vs-EffDoc.png)</kbd>
