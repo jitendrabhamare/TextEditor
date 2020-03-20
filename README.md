@@ -38,6 +38,7 @@ The code being developed here is what’s called “back-end” code, in that I 
     - Generate a text (of size based on number of words requested) by randomly choosing 'nextWord' from list of list-nodes. 
 
 #### Here is an example  
+<kbd>![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/moocTextEditor-MarkovText.png)</kbd>
 
 
 #### Code
