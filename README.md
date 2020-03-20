@@ -24,3 +24,11 @@ The code being developed here is what’s called “back-end” code, in that I 
 -  **Determine and plot how much faster EfficientDocument is than BasicDocument in computing a single Flesch score** for a document by calculating the Big-O running time of the code to compute the Flesch score for BasicDocument and EfficientDocument.
 
 <kbd>![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/BasicDoc-vs-EffDoc.png)</kbd>
+
+#### Code
+- [src/document/BasicDocument.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/BasicDocument.java)
+- [src/document/EfficientDocument.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/EfficientDocument.java)
+- [src/document/DocumentBenchmarking.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/DocumentBenchmarking.java)
+
+
+### 
