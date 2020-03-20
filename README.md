@@ -31,4 +31,16 @@ The code being developed here is what’s called “back-end” code, in that I 
 - [src/document/DocumentBenchmarking.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/document/DocumentBenchmarking.java)
 
 
-### 
+### 3. Implement Markov Text Generation using a List of Lists.
+- Implement and Test a Linked List Data Structure
+- Implement Markov Text Generator that -
+    - Train the data by adding the sourceText and building a list of list-nodes where each list-node contains a word and list of all of its 'nextWords'. 
+    - Generate a text (of size based on number of words requested) by randomly choosing 'nextWord' from list of list-nodes. 
+
+#### Here is an example  
+
+
+#### Code
+- [src/textgen/MyLinkedList.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/textgen/MyLinkedList.java)
+- [src/textgen/MarkovTextGenerator.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/textgen/MarkovTextGenerator.java)
+- [src/textgen/MarkovTextGeneratorLoL.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/textgen/MarkovTextGeneratorLoL.java)
