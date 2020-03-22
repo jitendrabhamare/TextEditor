@@ -53,7 +53,10 @@ The code being developed here is what’s called “back-end” code, in that I 
 - Calculate the running time to find words in each Dictionary implementation by running the DictionaryBenchmarking class. 
 
 #### Running Time Comparison 
-![]()
+<kbd>![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/LL-vs-BST-Benchmarking.png)</kbd>
+
+#### Spell-Checking Demo
+<kbd>![](https://github.com/jitendrabhamare/TextEditor/blob/master/img/moocTextEditor-Spell-Checking.png)</kbd>
 
 #### Code
 - [src/spelling/DictionaryLL.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryLL.java)
