@@ -50,6 +50,13 @@ The code being developed here is what’s called “back-end” code, in that I 
 ### 4. Spell checking and more benchmarking
 - Implement a dictionary of words of using a LinkedList vs a Binary Search Tree and compare the performance.
 - Check if a word is in dictionary (in both DS LinkedList and BST). If not, flag misspelled words.   
-- Calculate the running time to find words in each Dictionary implementation by running the DictionaryBenchmarking class 
+- Calculate the running time to find words in each Dictionary implementation by running the DictionaryBenchmarking class. 
+
+#### Running Time Comparison 
+![]()
 
 #### Code
+- [src/spelling/DictionaryLL.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryLL.java)
+- [src/spelling/DictionaryBST.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryBST.java)
+- [src/spelling/DictionaryBenchmarking.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryBenchmarking.java)
+
