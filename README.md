@@ -63,3 +63,5 @@ The code being developed here is what’s called “back-end” code, in that I 
 - [src/spelling/DictionaryBST.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryBST.java)
 - [src/spelling/DictionaryBenchmarking.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/DictionaryBenchmarking.java)
 
+### 5. Autocomplete
+
