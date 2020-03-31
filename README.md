@@ -68,8 +68,9 @@ The code being developed here is what’s called “back-end” code, in that I 
 - Use a trie data structure to store the words in a dictionary and use the breadth first search algorithm to implement predictCompletions method that returns list of words from typed String.
 
 #### Autocomplete Demo
-<kbd>![alt gif1]()</kbd>
+<kbd>![alt gif1](https://github.com/jitendrabhamare/TextEditor/blob/master/img/autocomplete-demo.gif)</kbd>
 
 #### Code
+- [src/spelling/AutoCompleteDictionaryTrie.java](https://github.com/jitendrabhamare/TextEditor/blob/master/src/spelling/AutoCompleteDictionaryTrie.java)
 
 
